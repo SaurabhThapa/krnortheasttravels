@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shillong to Double Decker Living Root Bridge Taxi | KR Northeast Travel</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-blue: #0d6efd;
+            --dark-bg: #0f172a;
+            --light-blue: #e0e7ff;
+            --glass-white: rgba(255, 255, 255, 0.1);
+            --nav-glass: rgba(15, 23, 42, 0.6);
+            --radius-lg: 1.25rem;
+            --radius-md: 0.75rem;
+            --radius-sm: 0.4rem;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Visibility & Styling (Identical to index.html) */
+        .navbar {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 20px 0;
+            z-index: 1050;
+        }
+
+        .glass-nav {
+            background: var(--nav-glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .navbar.scrolled {
+            background: white !important;
+            padding: 12px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: none;
+            border-bottom: none;
+        }
+
+        .navbar-brand {
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: white !important;
+            font-size: 1.4rem;
+        }
+
+        .navbar.scrolled .navbar-brand {
+            color: var(--dark-bg) !important;
+        }
+
+        .navbar .navbar-toggler {
+            color: white !important;
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
+        
+        .navbar.scrolled .navbar-toggler {
+            color: var(--dark-bg) !important;
+        }
+
+        .nav-link {
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.8) !important;
+            margin: 0 12px;
+            transition: 0.3s;
+        }
+
+        .navbar.scrolled .nav-link {
+            color: #475569 !important;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
+        }
+
+        .navbar.scrolled .nav-link.active {
+            color: var(--primary-blue) !important;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: var(--dark-bg);
+                margin: 15px -12px 0;
+                padding: 20px;
+                border-radius: var(--radius-md);
+            }
+            .navbar.scrolled .navbar-collapse {
+                background: white;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+        }
+
+        /* Page Header Style */
+        .page-header {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
+                        url('assets/images/packages/doubledecker.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            margin-top: -60px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            border: 1px solid #f1f5f9;
+        }
+
+        .highlight-title {
+            font-weight: 800;
+            color: var(--dark-bg);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-blue);
+            display: inline-block;
+        }
+
+        .route-table {
+            width: 100%;
+            margin: 30px 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        .route-table th {
+            background: var(--dark-bg);
+            color: white;
+            padding: 15px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+        .route-table td {
+            padding: 15px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        .tour-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tour-list li {
+            padding: 10px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            font-size: 0.95rem;
+            color: #64748b;
+        }
+
+        .tour-list li i {
+            color: var(--primary-blue);
+            margin-top: 5px;
+        }
+
+        .cta-sidebar {
+            background: var(--dark-bg);
+            color: white;
+            padding: 40px;
+            border-radius: var(--radius-md);
+            position: sticky;
+            top: 100px;
+        }
+
+        .btn-call-large {
+            background: var(--primary-blue);
+            color: white;
+            width: 100%;
+            padding: 18px;
+            border-radius: var(--radius-sm);
+            font-weight: 800;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: 0.3s;
+            margin-top: 25px;
+            font-size: 1.1rem;
+        }
+
+        .btn-call-large:hover {
+            background: #0056b3;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+        }
+        .faq-item h5 {
+            font-weight: 700;
+            color: var(--dark-bg);
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            padding: 80px 0 40px;
+            color: rgba(255,255,255,0.5);
+        }
+        .footer-brand { font-size: 1.5rem; font-weight: 900; color: white; margin-bottom: 25px; display: inline-block; }
+        .footer-link { color: rgba(255,255,255,0.5); text-decoration: none; transition: 0.3s; font-size: 0.9rem; display: block; margin-bottom: 12px; }
+        .footer-link:hover { color: white; }
+        
+        .whatsapp-btn {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background: #25d366; color: white; border-radius: 50%; display: flex; 
+            align-items: center; justify-content: center; font-size: 1.75rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); z-index: 1000;
+            text-decoration: none; transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/919402120220" class="whatsapp-btn shadow-lg" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Global Navigation Header (Synced with index.html) -->
+    <nav class="navbar navbar-expand-lg fixed-top glass-nav" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <div class="bg-primary p-2 rounded-2 me-2 shadow">
+                    <i class="fas fa-car text-white"></i>
+                </div>
+                <span>KR NORTHEAST <span class="text-primary">TRAVEL</span></span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="cab-service.html">Fleet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tour-package.html">Tours</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="tel:+919402120220" class="btn btn-primary px-4 fw-bold shadow-sm">
+                            <i class="fas fa-phone-alt me-2"></i>Call Now
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Banner -->
+    <header class="page-header">
+        <div class="container">
+            <h6 class="text-uppercase fw-bold tracking-widest mb-3" style="letter-spacing: 5px;">Taxi Service</h6>
+            <h1 class="display-4 fw-black mb-4">Shillong To Double Decker Bridge</h1>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="container pb-5">
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="content-card" data-aos="fade-up">
+                    <h3 class="fw-bold mb-4">Route Information</h3>
+                    
+                    <!-- Travel Route Details Table -->
+                    <div class="table-responsive">
+                        <table class="route-table">
+                            <thead>
+                                <tr>
+                                    <th>Pick Up</th>
+                                    <th>Destination</th>
+                                    <th>Distance</th>
+                                    <th>Estimated Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Anywhere in Shillong City</td>
+                                    <td>Double Decker Root Bridge (Tyrna)</td>
+                                    <td>60 KM Approx</td>
+                                    <td>2 HR 30 MIN</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="text-muted leading-relaxed mb-5">
+                        <p>KR Northeast Travel offers an online service for Shillong to Double Decker Living Root Bridge cab booking at an affordable price. Book your journey online in advance for the best rates and confirmed availability. We provide one-way drops to the Tyrna trek point, multicity packages, and full-day sightseeing roundtrips.</p>
+                        <p>The road trip from Shillong to the base of the Double Decker bridge is one of the most scenic drives in the Khasi Hills. Hiring a chauffeur-driven cab is the most comfortable option, allowing you to relax before starting the famous 3,500-step trek down to Nongriat village.</p>
+                    </div>
+
+                    <h4 class="fw-bold mb-3">Cab Fares & Vehicle Options</h4>
+                    <p class="text-muted mb-4">We are committed to transparent pricing. Our group rates for sedans and SUVs are designed to be more economical and comfortable than buying multiple bus or shared taxi tickets.</p>
+                    
+                    <!-- Vehicle Type Table -->
+                    <div class="table-responsive mb-5">
+                        <table class="route-table">
+                            <thead>
+                                <tr>
+                                    <th>Vehicle Type</th>
+                                    <th>Model</th>
+                                    <th>Capacity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Sedan</strong></td>
+                                    <td>Swift Dzire, Etios or similar</td>
+                                    <td>4 Seater</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SUV</strong></td>
+                                    <td>Ertiga, Chevy Enjoy or similar</td>
+                                    <td>6 Seater</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Premium SUV</strong></td>
+                                    <td>Innova, Innova Crysta</td>
+                                    <td>6-7 Seater</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tempo Traveller</strong></td>
+                                    <td>Force Traveller</td>
+                                    <td>13 / 17 Seater</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row mt-5">
+                        <!-- Inclusions -->
+                        <div class="col-md-6 mb-5">
+                            <h4 class="highlight-title">Service Inclusions</h4>
+                            <ul class="tour-list">
+                                <li><i class="fas fa-plus-circle text-success"></i> Premium Vehicle with Hill Expert Driver</li>
+                                <li><i class="fas fa-plus-circle text-success"></i> All Fuel Charges & Highway Tolls</li>
+                                <li><i class="fas fa-plus-circle text-success"></i> Driver Night Allowance & Food</li>
+                                <li><i class="fas fa-plus-circle text-success"></i> Standard Parking Charges</li>
+                                <li><i class="fas fa-plus-circle text-success"></i> All Applicable Local Taxes</li>
+                            </ul>
+                        </div>
+
+                        <!-- Exclusions -->
+                        <div class="col-md-6 mb-5">
+                            <h4 class="highlight-title">Exclusions</h4>
+                            <ul class="tour-list">
+                                <li><i class="fas fa-minus-circle text-danger"></i> Entry Fees for Tyrna/Nongriat Parks</li>
+                                <li><i class="fas fa-minus-circle text-danger"></i> Local Guide Fees for the Trek</li>
+                                <li><i class="fas fa-minus-circle text-danger"></i> Personal Meals & Accommodation</li>
+                                <li><i class="fas fa-minus-circle text-danger"></i> Adventure Activity Charges</li>
+                                <li><i class="fas fa-minus-circle text-danger"></i> Room Heater & Extra Hotel Services</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <div class="mt-5 pt-5 border-top">
+                        <h3 class="fw-bold mb-4">Frequently Asked Questions</h3>
+                        <div class="faq-item">
+                            <h5>What are the car options available for this trip?</h5>
+                            <p class="text-muted italic">For small groups, we offer 4-seater AC sedans (Dzire, Etios). For larger families or groups, we recommend our 6-7 seater SUVs (Innova, Ertiga). For groups larger than 7, 13-17 seater Tempo Travellers are available.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h5>Can the cab stay overnight while we trek?</h5>
+                            <p class="text-muted italic">Yes, we provide multi-day packages where the driver can wait for you at the base point (Tyrna) while you stay overnight in Nongriat village. Please call our manager for specific overnight stay packages.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 p-4 bg-light rounded-3 border-start border-primary border-4">
+                        <p class="mb-0 fw-bold">Our 24/7 support line is available for both pre-booking and urgent taxi requirements to Tyrna. Call us for a reliable hill driving experience.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="cta-sidebar" data-aos="fade-left">
+                    <h5 class="fw-bold mb-3">Instant Booking</h5>
+                    <p class="small opacity-75 mb-4">Planning the trek to the world-famous Double Decker bridge? Book your cab now to ensure a timely arrival at the trek starting point.</p>
+                    
+                    <div class="p-3 bg-white bg-opacity-10 rounded-3 mb-2">
+                        <p class="small mb-1 opacity-75">One-Way Drop from:</p>
+                        <h2 class="fw-black mb-0">Rs 2,500/-</h2>
+                        <p class="x-small opacity-50">Confirmed Pickup Point</p>
+                    </div>
+
+                    <div class="mt-4 p-3 bg-white bg-opacity-10 rounded-3 mb-2">
+                        <p class="small mb-1 opacity-75">Booking Support:</p>
+                        <h3 class="fw-black mb-0">+91 78922 77693</h3>
+                    </div>
+                    
+                    <a href="tel:917892277693" class="btn-call-large shadow-lg">
+                        <i class="fas fa-phone-alt"></i> Call to Book Now
+                    </a>
+
+                    <div class="mt-4 pt-4 border-top border-secondary">
+                        <h6 class="fw-bold small mb-3">Travel with Confidence</h6>
+                        <ul class="list-unstyled small opacity-75 d-grid gap-2">
+                            <li><i class="fas fa-check text-primary me-2"></i> Punctual Tyrna Base Pickups</li>
+                            <li><i class="fas fa-check text-primary me-2"></i> Clean & Well-Maintained Fleet</li>
+                            <li><i class="fas fa-check text-primary me-2"></i> Drivers Trained for Hill Roads</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <a class="footer-brand" href="index.html">KR NORTHEAST</a>
+                    <p class="small opacity-75 pe-lg-5">Your trusted partner for safe mountain travel across the Northeast. Reliability and safety are our top priorities.</p>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <h6 class="text-white fw-bold mb-4 uppercase tracking-widest small">Explore</h6>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="cab-service.html" class="footer-link">Taxi Service</a>
+                    <a href="tour-package.html" class="footer-link">Packages</a>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <h6 class="text-white fw-bold mb-4 uppercase tracking-widest small">Book Now</h6>
+                    <p class="text-white fw-black fs-5 mb-0">+91 94021 20220</p>
+                    <p class="small text-white opacity-75">Available 24/7</p>
+                </div>
+            </div>
+            <hr class="my-5 opacity-10">
+            <div class="text-center small opacity-50">
+                &copy; 2026 KR Northeast Travel. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init({ duration: 1000, once: true, offset: 50 });
+
+        // Navbar Scroll Logic
+        $(window).on('scroll', function() {
+            if ($(window).scrollTop() > 50) {
+                $('#mainNav').addClass('scrolled').removeClass('glass-nav');
+            } else {
+                $('#mainNav').removeClass('scrolled').addClass('glass-nav');
+            }
+        });
+    </script>
+</body>
+</html>

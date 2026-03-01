@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meghalaya Tour | KR Northeast Travel</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-blue: #0d6efd;
+            --dark-bg: #0f172a;
+            --light-blue: #e0e7ff;
+            --glass-white: rgba(255, 255, 255, 0.1);
+            --nav-glass: rgba(15, 23, 42, 0.6);
+            --radius-lg: 1.25rem;
+            --radius-md: 0.75rem;
+            --radius-sm: 0.5rem;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Navbar (Same as Index) */
+        .navbar {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 20px 0;
+            z-index: 1050;
+        }
+        .glass-nav {
+            background: var(--nav-glass);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .navbar.scrolled {
+            background: white !important;
+            padding: 12px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .navbar-brand { font-weight: 900; letter-spacing: -1px; color: white !important; }
+        .navbar.scrolled .navbar-brand { color: var(--dark-bg) !important; }
+        .nav-link {
+            text-transform: uppercase; font-size: 12px; font-weight: 700;
+            letter-spacing: 1.5px; color: rgba(255,255,255,0.8) !important;
+            margin: 0 12px; transition: 0.3s;
+        }
+        .navbar.scrolled .nav-link { color: #475569 !important; }
+        .navbar.scrolled .nav-link.active { color: var(--primary-blue) !important; }
+        .navbar .navbar-toggler { color: white !important; border: none; }
+        .navbar.scrolled .navbar-toggler { color: var(--dark-bg) !important; }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: var(--dark-bg); margin: 15px -12px 0;
+                padding: 20px; border-radius: var(--radius-md);
+            }
+            .navbar.scrolled .navbar-collapse { background: white; }
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
+                        url('assets/images/packages/p1.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .tour-card-main {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            margin-top: -60px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            border: 1px solid #f1f5f9;
+        }
+
+        .highlight-title {
+            font-weight: 800;
+            color: var(--dark-bg);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-blue);
+            display: inline-block;
+        }
+
+        .tour-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tour-list li {
+            padding: 10px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            font-size: 0.95rem;
+            color: #64748b;
+        }
+
+        .tour-list li i {
+            color: var(--primary-blue);
+            margin-top: 5px;
+        }
+
+        .cta-box {
+            background: var(--dark-bg);
+            color: white;
+            padding: 40px;
+            border-radius: var(--radius-md);
+            position: sticky;
+            top: 100px;
+        }
+
+        .btn-call {
+            background: var(--primary-blue);
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border-radius: var(--radius-sm);
+            font-weight: 800;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-call:hover {
+            background: #0056b3;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer { background: var(--dark-bg); padding: 80px 0 40px; color: rgba(255,255,255,0.5); }
+        .footer-brand { font-size: 1.5rem; font-weight: 900; color: white; margin-bottom: 25px; display: inline-block; }
+        .footer-link { color: rgba(255,255,255,0.5); text-decoration: none; transition: 0.3s; font-size: 0.9rem; display: block; margin-bottom: 12px; }
+        .footer-link:hover { color: white; }
+
+        .whatsapp-btn {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background: #25d366; color: white; border-radius: 50%; display: flex; 
+            align-items: center; justify-content: center; font-size: 1.75rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); z-index: 1000;
+            text-decoration: none; transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Instant Booking WhatsApp -->
+    <a href="https://wa.me/919402120220" class="whatsapp-btn shadow-lg" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Global Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top glass-nav" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <div class="bg-primary p-2 rounded-2 me-2 shadow">
+                    <i class="fas fa-car text-white"></i>
+                </div>
+                <span>KR NORTHEAST <span class="text-primary">TRAVEL</span></span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="fleet.html">Fleet</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="tours.html">Tours</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="tel:+919402120220" class="btn btn-primary px-4 fw-bold shadow-sm">
+                            <i class="fas fa-phone-alt me-2"></i>Call Now
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="page-header">
+        <div class="container">
+            <h6 class="text-uppercase fw-bold tracking-widest mb-3" style="letter-spacing: 5px;">Tour Packages</h6>
+            <h1 class="display-3 fw-black mb-4">Meghalaya Tour</h1>
+            <div class="d-flex justify-content-center gap-4 flex-wrap">
+                <span class="badge bg-primary px-3 py-2 rounded-pill"><i class="far fa-clock me-2"></i>04 Nights | 05 Days</span>
+                <span class="badge bg-white text-dark px-3 py-2 rounded-pill"><i class="fas fa-map-marker-alt me-2"></i>Shillong, Sohra, Mawlynnong</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container pb-5">
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="tour-card-main" data-aos="fade-up">
+                    <h3 class="fw-bold mb-4">Tour Overview</h3>
+                    <p class="text-muted leading-relaxed">
+                        Experience the "Abode of Clouds" with KR Northeast Travel. This curated journey takes you through the Scotland of the East (Shillong), the wettest place on earth (Cherrapunjee), and the cleanest village in Asia (Mawlynnong).
+                    </p>
+                    
+                    <div class="row mt-5">
+                        <!-- Highlights -->
+                        <div class="col-12 mb-5">
+                            <h4 class="highlight-title">Tour Highlights</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="tour-list">
+                                        <li><i class="fas fa-check-circle"></i> Scenic Umiam Lake Selfie Stop</li>
+                                        <li><i class="fas fa-check-circle"></i> Breathtaking Laitlum Canyons</li>
+                                        <li><i class="fas fa-check-circle"></i> Magical Krang Suri Waterfalls</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="tour-list">
+                                        <li><i class="fas fa-check-circle"></i> Asia's Cleanest Village: Mawlynnong</li>
+                                        <li><i class="fas fa-check-circle"></i> Crystal Waters of Umngot River</li>
+                                        <li><i class="fas fa-check-circle"></i> Ancient Living Root Bridges</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Inclusions -->
+                        <div class="col-md-6 mb-5">
+                            <h4 class="highlight-title">Inclusions</h4>
+                            <ul class="tour-list">
+                                <li><i class="fas fa-plus-circle text-success"></i> Vehicle with Professional Driver</li>
+                                <li><i class="fas fa-plus-circle text-success"></i> Driver Expenses & Food</li>
+                                <li><i class="fas fa-plus-circle text-success"></i> Fuel & Toll Charges</li>
+                                <li><i class="fas fa-plus-circle text-success"></i> Pickup and Drop Services</li>
+                                <li><i class="fas fa-plus-circle text-success"></i> All Applicable Taxes Included</li>
+                                <li><i class="fas fa-plus-circle text-success"></i> Parking Charges for City Tour</li>
+                            </ul>
+                        </div>
+
+                        <!-- Exclusions -->
+                        <div class="col-md-6 mb-5">
+                            <h4 class="highlight-title">Exclusions</h4>
+                            <ul class="tour-list">
+                                <li><i class="fas fa-minus-circle text-danger"></i> Adventure Activities (Rafting, etc.)</li>
+                                <li><i class="fas fa-minus-circle text-danger"></i> Monument Entrance & Camera Fees</li>
+                                <li><i class="fas fa-minus-circle text-danger"></i> Personal Expenses (Shopping, Tips)</li>
+                                <li><i class="fas fa-minus-circle text-danger"></i> Meals (Unless Specified)</li>
+                                <li><i class="fas fa-minus-circle text-danger"></i> Room Heater Charges</li>
+                                <li><i class="fas fa-minus-circle text-danger"></i> Natural Calamity/Strike Expenses</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky CTA Sidebar -->
+            <div class="col-lg-4">
+                <div class="cta-box" data-aos="fade-left">
+                    <h5 class="fw-bold mb-3">Book This Package</h5>
+                    <p class="small opacity-75 mb-4">Speak with our tour manager to customize this itinerary or get the best available group rates.</p>
+                    
+                    <div class="p-3 bg-white bg-opacity-10 rounded-3 mb-4">
+                        <p class="small mb-1">Starting Price</p>
+                        <h2 class="fw-black mb-0">Rs 27,000/-</h2>
+                        <p class="x-small opacity-50">All inclusive of Cab & Driver</p>
+                    </div>
+
+                    <p class="small mb-1 opacity-75">Ready to explore?</p>
+                    <a href="tel:917892277693" class="btn-call shadow-lg">
+                        <i class="fas fa-phone-alt"></i> Call to Book Now
+                    </a>
+                    
+                    <div class="mt-4 text-center">
+                        <p class="small opacity-50 mb-0">Available 24/7 for bookings</p>
+                        <p class="fw-bold">+91 78922 77693</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <a class="footer-brand" href="index.html">KR NORTHEAST</a>
+                    <p class="small opacity-75 pe-lg-5">Your trusted partner for safe mountain travel across the Northeast. Reliability and safety are our top priorities.</p>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <h6 class="text-white fw-bold mb-4 uppercase tracking-widest small">Explore</h6>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="fleet.html" class="footer-link">Our Fleet</a>
+                    <a href="tours.html" class="footer-link">Packages</a>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <h6 class="text-white fw-bold mb-4 uppercase tracking-widest small">Book Now</h6>
+                    <p class="text-white fw-black fs-5 mb-0">+91 94021 20220</p>
+                    <p class="small text-white opacity-75">Available 24/7</p>
+                </div>
+            </div>
+            <hr class="my-5 opacity-10">
+            <div class="text-center small opacity-50">
+                &copy; 2026 KR Northeast Travel.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init({ duration: 1000, once: true, offset: 50 });
+        $(window).on('scroll', function() {
+            if ($(window).scrollTop() > 50) {
+                $('#mainNav').addClass('scrolled').removeClass('glass-nav');
+            } else {
+                $('#mainNav').removeClass('scrolled').addClass('glass-nav');
+            }
+        });
+    </script>
+</body>
+</html>

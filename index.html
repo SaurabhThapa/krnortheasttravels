@@ -1,0 +1,1159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KR Northeast Travel | No. 1 Cab Service in Shillong</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      :root {
+        --primary-blue: #0d6efd;
+        --dark-bg: #0f172a;
+        --light-blue: #e0e7ff;
+        --glass-white: rgba(255, 255, 255, 0.1);
+        --nav-glass: rgba(15, 23, 42, 0.6);
+        --radius-lg: 1.25rem;
+        --radius-md: 0.75rem;
+        --radius-sm: 0.5rem;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        color: #334155;
+        background-color: #ffffff;
+        overflow-x: hidden;
+      }
+
+      /* Navbar Visibility & Styling */
+      .navbar {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 20px 0;
+        z-index: 1050;
+      }
+
+      .glass-nav {
+        background: var(--nav-glass);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .navbar.scrolled {
+        background: white !important;
+        padding: 12px 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: none;
+        border-bottom: none;
+      }
+
+      .navbar-brand {
+        font-weight: 900;
+        letter-spacing: -1px;
+        color: white !important;
+        font-size: 1.4rem;
+      }
+
+      .navbar.scrolled .navbar-brand {
+        color: var(--dark-bg) !important;
+      }
+
+      /* Mobile Toggler Color Fix */
+      .navbar .navbar-toggler {
+        color: white !important;
+        border: none;
+      }
+      .navbar.scrolled .navbar-toggler {
+        color: var(--dark-bg) !important;
+      }
+
+      .nav-link {
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        color: rgba(255, 255, 255, 0.8) !important;
+        margin: 0 12px;
+        transition: 0.3s;
+      }
+
+      .navbar.scrolled .nav-link {
+        color: #475569 !important;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: white !important;
+      }
+
+      .navbar.scrolled .nav-link.active {
+        color: var(--primary-blue) !important;
+      }
+
+      /* Mobile Menu Styling */
+      @media (max-width: 991.98px) {
+        .navbar-collapse {
+          background: var(--dark-bg);
+          margin: 15px -12px 0;
+          padding: 20px;
+          border-radius: var(--radius-md);
+        }
+        .navbar.scrolled .navbar-collapse {
+          background: white;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      /* Carousel Hero Section */
+      .hero-carousel .carousel-item {
+        height: 100vh;
+        min-height: 600px;
+        background-color: var(--dark-bg);
+        position: relative;
+      }
+
+      .hero-carousel .carousel-item img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        filter: brightness(0.45);
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at center,
+          transparent 0%,
+          rgba(15, 23, 42, 0.4) 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        z-index: 2;
+      }
+
+      .hero-title {
+        font-size: clamp(2.5rem, 8vw, 5.5rem);
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: -3px;
+        margin-bottom: 25px;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        background: var(--glass-white);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 8px 24px;
+        border-radius: 100px;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+      }
+
+      /* Stats Bar */
+      .stats-wrapper {
+        background: var(--dark-bg);
+        padding: 60px 0;
+        margin-top: -60px;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        position: relative;
+        z-index: 10;
+      }
+
+      .stat-card h3 {
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: white;
+        margin-bottom: 0;
+      }
+
+      .stat-card p {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 2px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 5px;
+      }
+
+      /* Services Section */
+      .section-padding {
+        padding: 100px 0;
+      }
+
+      .section-title-sm {
+        color: var(--primary-blue);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 0.85rem;
+        margin-bottom: 15px;
+        display: block;
+      }
+
+      .section-title-lg {
+        font-weight: 900;
+        font-size: 2.75rem;
+        color: var(--dark-bg);
+        letter-spacing: -1px;
+        margin-bottom: 40px;
+      }
+
+      .service-card {
+        background: #f8fafc;
+        border-radius: var(--radius-md);
+        padding: 40px;
+        border: 1px solid #f1f5f9;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        height: 100%;
+      }
+
+      .service-card:hover {
+        background: white;
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.1);
+        border-color: var(--primary-blue);
+      }
+
+      .icon-box {
+        width: 60px;
+        height: 60px;
+        background: var(--light-blue);
+        color: var(--primary-blue);
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+        transition: 0.3s;
+      }
+
+      /* --- MASONRY GALLERY SECTION --- */
+      .masonry-container {
+        column-count: 3;
+        column-gap: 20px;
+      }
+
+      @media (max-width: 992px) {
+        .masonry-container {
+          column-count: 2;
+        }
+      }
+      @media (max-width: 576px) {
+        .masonry-container {
+          column-count: 1;
+        }
+      }
+
+      .filtr-item {
+        break-inside: avoid;
+        margin-bottom: 20px;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        transition: transform 0.4s ease;
+      }
+
+      .filtr-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.6s ease;
+      }
+
+      .filtr-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .item-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 25px 20px 15px;
+        background: linear-gradient(
+          to top,
+          rgba(15, 23, 42, 0.95) 0%,
+          transparent 100%
+        );
+        color: white;
+        z-index: 2;
+      }
+
+      .item-title a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.25rem;
+        font-weight: 800;
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .item-title p {
+        margin-bottom: 0;
+        font-size: 0.75rem;
+        opacity: 0.8;
+        font-weight: 600;
+        display: flex;
+        gap: 12px;
+      }
+
+      .item-title p span {
+        display: inline-block;
+      }
+
+      .item-title p span:not(:last-child)::after {
+        content: "|";
+        margin-left: 10px;
+        opacity: 0.5;
+      }
+
+      /* Packages Section Styling */
+      .single-package-item {
+        background: #ffffff;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+        border: 1px solid #f1f5f9;
+        transition: 0.3s;
+        height: 100%;
+      }
+
+      .single-package-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .single-package-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+
+      .single-package-item-txt {
+        padding: 25px;
+      }
+
+      .single-package-item-txt h3 {
+        font-size: 1.15rem;
+        font-weight: 800;
+        color: var(--dark-bg);
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .single-package-item-txt h3 span {
+        font-size: 1rem;
+        color: var(--primary-blue);
+        background: var(--light-blue);
+        padding: 4px 12px;
+        border-radius: 50px;
+      }
+
+      .book-bttn {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        background: var(--dark-bg);
+        color: white;
+        text-decoration: none;
+        padding: 12px;
+        border-radius: var(--radius-sm);
+        font-weight: 700;
+        font-size: 0.9rem;
+        transition: 0.3s;
+      }
+
+      .book-bttn:hover {
+        background: var(--primary-blue);
+        color: white;
+      }
+
+      .btn-more {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .btn-more a {
+        color: var(--primary-blue);
+        text-decoration: none;
+        font-weight: 800;
+        letter-spacing: 2px;
+        font-size: 0.85rem;
+        border-bottom: 2px solid var(--primary-blue);
+        padding-bottom: 5px;
+        transition: 0.3s;
+      }
+
+      .btn-more a:hover {
+        opacity: 0.7;
+      }
+
+      /* Trust Section */
+      .trust-card-img {
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        height: 450px;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--dark-bg);
+        padding: 80px 0 40px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .footer-brand {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: white;
+        margin-bottom: 25px;
+        display: inline-block;
+      }
+
+      .footer-link {
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        transition: 0.3s;
+        font-size: 0.9rem;
+        display: block;
+        margin-bottom: 12px;
+      }
+
+      .footer-link:hover {
+        color: white;
+      }
+
+      /* Floating WhatsApp */
+      .whatsapp-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: #25d366;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+        z-index: 1000;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .whatsapp-btn:hover {
+        transform: scale(1.1);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Instant Booking WhatsApp -->
+    <a
+      href="https://wa.me/919402120220"
+      class="whatsapp-btn shadow-lg"
+      target="_blank"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Global Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top glass-nav" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <div class="bg-primary p-2 rounded-2 me-2 shadow">
+            <i class="fas fa-car text-white"></i>
+          </div>
+          <span>KR NORTHEAST <span class="text-primary">TRAVEL</span></span>
+        </a>
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="fleet.html">Fleet</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tours.html">Tours</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pricing.html">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item ms-lg-3">
+              <a
+                href="tel:+919402120220"
+                class="btn btn-primary px-4 fw-bold shadow-sm"
+              >
+                <i class="fas fa-phone-alt me-2"></i>Call Now
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <!-- Hero Carousel -->
+      <div
+        id="heroCarousel"
+        class="carousel slide carousel-fade hero-carousel"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="5000">
+            <img
+              src="https://images.unsplash.com/photo-1506461883276-594a12b11cf3?q=80&w=2000&auto=format&fit=crop"
+              alt="Meghalaya Landscape"
+            />
+            <div class="hero-overlay">
+              <div class="container">
+                <div class="hero-badge" data-aos="fade-down">
+                  <span class="text-success me-2"
+                    ><i class="fas fa-circle fa-xs"></i
+                  ></span>
+                  Trusted by 5000+ Travelers
+                </div>
+                <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+                  Explore the <span class="text-primary">Northeast</span> <br />
+                  Like Never Before
+                </h1>
+                <p
+                  class="lead mb-5 opacity-75 max-w-2xl mx-auto fs-5 text-white font-light"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                >
+                  Safe hill driving, sanitized vehicles, and expert local guides
+                  for your Meghalaya adventures.
+                </p>
+                <div
+                  class="d-flex flex-column flex-sm-row justify-content-center gap-3"
+                  data-aos="fade-up"
+                  data-aos-delay="300"
+                >
+                  <a
+                    href="fleet.html"
+                    class="btn btn-primary btn-lg px-5 py-3 fw-bold shadow-lg"
+                    ><i class="fas fa-car-side me-2"></i>Book Your Ride</a
+                  >
+                  <a
+                    href="tours.html"
+                    class="btn btn-outline-light btn-lg px-5 py-3 fw-bold"
+                    >View Packages</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="assets/images/carousel/dawki.jpg" alt="Dawki River" />
+            <div class="hero-overlay">
+              <div class="container">
+                <div class="hero-badge">
+                  <span class="text-primary me-2"
+                    ><i class="fas fa-star fa-xs"></i
+                  ></span>
+                  Crystal Clear Waters of Dawki
+                </div>
+                <h1 class="hero-title">
+                  Experience <br />
+                  <span class="text-primary">Pure Magic</span>
+                </h1>
+                <p
+                  class="lead mb-5 opacity-75 max-w-2xl mx-auto fs-5 text-white font-light"
+                >
+                  Glide through the emerald waters of Umngot with our
+                  specialized sightseeing cabs.
+                </p>
+                <div
+                  class="d-flex flex-column flex-sm-row justify-content-center gap-3"
+                >
+                  <a
+                    href="tours.html"
+                    class="btn btn-primary btn-lg px-5 py-3 fw-bold shadow-lg"
+                    >Explore Dawki Tours</a
+                  >
+                  <a
+                    href="tel:+919402120220"
+                    class="btn btn-outline-light btn-lg px-5 py-3 fw-bold"
+                    >Check Availability</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img
+              src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=2000&auto=format&fit=crop"
+              alt="Arunachal Pradesh"
+            />
+            <div class="hero-overlay">
+              <div class="container">
+                <div class="hero-badge">
+                  <span class="text-warning me-2"
+                    ><i class="fas fa-award fa-xs"></i
+                  ></span>
+                  Offbeat Trail Experts
+                </div>
+                <h1 class="hero-title">
+                  Beyond the <br />
+                  <span class="text-primary">Known Path</span>
+                </h1>
+                <p
+                  class="lead mb-5 opacity-75 max-w-2xl mx-auto fs-5 text-white font-light"
+                >
+                  Journey to the high passes of Arunachal with drivers who act
+                  as your local storytellers.
+                </p>
+                <div
+                  class="d-flex flex-column flex-sm-row justify-content-center gap-3"
+                >
+                  <a
+                    href="fleet.html"
+                    class="btn btn-primary btn-lg px-5 py-3 fw-bold shadow-lg"
+                    >Rent a SUV</a
+                  >
+                  <a
+                    href="contact.html"
+                    class="btn btn-outline-light btn-lg px-5 py-3 fw-bold"
+                    >Contact Our Office</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <!-- Stats Bar -->
+      <section class="stats-wrapper text-white text-center">
+        <div class="container">
+          <div class="row g-4">
+            <div class="col-6 col-md-3 stat-card" data-aos="zoom-in">
+              <h3>5000+</h3>
+              <p>Trips Completed</p>
+            </div>
+            <div
+              class="col-6 col-md-3 stat-card"
+              data-aos="zoom-in"
+              data-aos-delay="100"
+            >
+              <h3>150+</h3>
+              <p>Local Drivers</p>
+            </div>
+            <div
+              class="col-6 col-md-3 stat-card"
+              data-aos="zoom-in"
+              data-aos-delay="200"
+            >
+              <h3>4.9/5</h3>
+              <p>Guest Rating</p>
+            </div>
+            <div
+              class="col-6 col-md-3 stat-card"
+              data-aos="zoom-in"
+              data-aos-delay="300"
+            >
+              <h3>24/7</h3>
+              <p>Available Support</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose Us -->
+      <section class="section-padding bg-white">
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-6" data-aos="fade-right">
+              <div class="trust-card-img shadow-lg overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=800&auto=format&fit=crop"
+                  alt="Local Driver"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                />
+              </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+              <span class="section-title-sm">Why Choose Us</span>
+              <h2 class="section-title-lg mb-4">
+                Masters of the Mountain Roads
+              </h2>
+              <div class="d-flex mb-4">
+                <div class="me-3 text-primary">
+                  <i class="fas fa-check-circle fa-xl"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-1">Safety First Policy</h6>
+                  <p class="text-muted small mb-0">
+                    Every car undergoes a 20-point safety check and full
+                    sanitization before every pickup.
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex mb-4">
+                <div class="me-3 text-primary">
+                  <i class="fas fa-check-circle fa-xl"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-1">No Hidden Surprises</h6>
+                  <p class="text-muted small mb-0">
+                    Transparent pricing that includes fuel, driver, and tolls.
+                    No last-minute bargaining.
+                  </p>
+                </div>
+              </div>
+              <a
+                href="about.html"
+                class="btn btn-dark btn-lg px-5 mt-2 fw-bold rounded-3"
+                >Learn More About Us</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- --- TOP DESTINATIONS MASONRY GALLERY --- -->
+      <section id="gallery" class="section-padding bg-light">
+        <div class="container">
+          <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title-lg">Top Destination</h2>
+            <p class="text-muted small">
+              Unveiling the Best of Northeast India
+            </p>
+          </div>
+
+          <div class="masonry-container">
+            <!-- Arunachal -->
+            <div class="filtr-item" data-aos="fade-up">
+              <img
+                src="assets/images/destination/dest_arunachal.jpg"
+                alt="travel agency | Taxi Service Arunachal Pradesh"
+              />
+              <div class="item-title">
+                <a href="arunachal-pradesh.html">Arunachal</a>
+                <p><span>20 tours</span> <span>15 places</span></p>
+              </div>
+            </div>
+
+            <!-- Assam -->
+            <div class="filtr-item" data-aos="fade-up" data-aos-delay="100">
+              <img
+                src="assets/images/destination/dest_assam.jpg"
+                alt="travel agency | Taxi Service Assam"
+              />
+              <div class="item-title">
+                <a href="assam.html">Assam</a>
+                <p><span>12 tours</span> <span>9 places</span></p>
+              </div>
+            </div>
+
+            <!-- Meghalaya -->
+            <div class="filtr-item" data-aos="fade-up" data-aos-delay="200">
+              <img
+                src="assets/images/destination/dest_meghalaya.jpg"
+                alt="travel agency | Taxi Service Meghalaya"
+              />
+              <div class="item-title">
+                <a href="meghalaya.html">Meghalaya</a>
+                <p><span>25 tours</span> <span>10 places</span></p>
+              </div>
+            </div>
+
+            <!-- Bhutan -->
+            <div class="filtr-item" data-aos="fade-up" data-aos-delay="300">
+              <img
+                src="assets/images/destination/dest_arunachal.jpg"
+                alt="travel agency | Taxi Service Bhutan"
+              />
+              <div class="item-title">
+                <a href="bhutan.html">Bhutan</a>
+                <p><span>18 tours</span> <span>9 places</span></p>
+              </div>
+            </div>
+
+            <!-- Mizoram -->
+            <div class="filtr-item" data-aos="fade-up" data-aos-delay="400">
+              <img
+                src="assets/images/destination/dest_mizoram.jpg"
+                alt="travel agency | Taxi Service Sikkim"
+              />
+              <div class="item-title">
+                <a href="mizoram.html">Mizoram</a>
+                <p><span>14 tours</span> <span>12 places</span></p>
+              </div>
+            </div>
+
+            <!-- West Bengal -->
+            <div class="filtr-item" data-aos="fade-up" data-aos-delay="500">
+              <img
+                src="assets/images/destination/dest_west_bengal.jpg"
+                alt="travel agency | Taxi Service West Bengal"
+              />
+              <div class="item-title">
+                <a href="#">West Bengal</a>
+                <p><span>14 tours</span> <span>6 places</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- --- SPECIAL PACKAGES SECTION --- -->
+      <section id="pack" class="section-padding bg-white">
+        <div class="container">
+          <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title-lg">Special Packages</h2>
+            <p class="text-muted small">
+              Explore the true beauty of North East.
+            </p>
+          </div>
+
+          <div class="row">
+            <!-- Package 1 -->
+            <div class="col-md-4 col-sm-6 mb-4" data-aos="fade-up">
+              <div class="single-package-item">
+                <img src="assets/images/packages/p1.jpg" alt="Meghalaya Tour" />
+                <div class="single-package-item-txt">
+                  <h3>Meghalaya Tour <span>Rs 27,000</span></h3>
+                  <div class="about-btn mt-4">
+                    <a class="book-bttn" href="meghalaya-tour.html">Book Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Package 2 -->
+            <div
+              class="col-md-4 col-sm-6 mb-4"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="single-package-item">
+                <img
+                  src="assets/images/packages/p2.jpg"
+                  alt="Sikkim Darjeeling Tour"
+                />
+                <div class="single-package-item-txt">
+                  <h3>Sikkim Darjeeling Tour <span>Rs 19,000</span></h3>
+                  <div class="about-btn mt-4">
+                    <a class="book-bttn" href="sikkim-darjeeling-tour.html"
+                      >Book Now</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Package 3 -->
+            <div
+              class="col-md-4 col-sm-6 mb-4"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="single-package-item">
+                <img
+                  src="assets/images/packages/p3.jpg"
+                  alt="Mesmerizing Meghalaya Tour"
+                />
+                <div class="single-package-item-txt">
+                  <h3>Mesmerizing Meghalaya <span>Rs 38,000</span></h3>
+                  <div class="about-btn mt-4">
+                    <a class="book-bttn" href="mesmerizing-meghalaya-tour.html"
+                      >Book Now</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Package 4 -->
+            <div class="col-md-4 col-sm-6 mb-4" data-aos="fade-up">
+              <div class="single-package-item">
+                <img
+                  src="assets/images/packages/p4.jpg"
+                  alt="Shillong Cherrapunji Mawlynnong Tour"
+                />
+                <div class="single-package-item-txt">
+                  <h3>Shillong Cherrapunji Mawlynnong <span>Rs 33,000</span></h3>
+                  <div class="about-btn mt-4">
+                    <a class="book-bttn" href="shillong-cherrapunji-mawlynnong.html">Book Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Package 5 -->
+            <div
+              class="col-md-4 col-sm-6 mb-4"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="single-package-item">
+                <img
+                  src="assets/images/packages/p5.jpg"
+                  alt="Shillong Dawki Cherrapunjee Mawlynnong Tour"
+                />
+                <div class="single-package-item-txt">
+                  <h3>Shillong Dawki Tour <span>Rs 22,000</span></h3>
+                  <div class="about-btn mt-4">
+                    <a class="book-bttn" href="shillong-dawki-tour.html"
+                      >Book Now</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Package 6 -->
+            <div
+              class="col-md-4 col-sm-6 mb-4"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="single-package-item">
+                <img
+                  src="assets/images/packages/p6.jpg"
+                  alt="Shillong Dawki Mawlynnong Tour"
+                />
+                <div class="single-package-item-txt">
+                  <h3>Shillong Mawlynnong <span>Rs 20,000</span></h3>
+                  <div class="about-btn mt-4">
+                    <a class="book-bttn" href="shillong-dawki-mawlynnong-tour.html"
+                      >Book Now</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-more" data-aos="fade-up">
+            <a href="tour-package.html">SEE MORE</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- --- TAXI SERVICE & CAR RENTALS SECTION --- -->
+      <section id="cab" class="section-padding bg-light">
+        <div class="container">
+          <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title-lg">Taxi Service - Car Rentals</h2>
+            <p class="text-muted small">
+              Taxi Service for everyone with the right fare
+            </p>
+          </div>
+
+          <div class="row">
+            <!-- Cab 1 -->
+            <div class="col-md-4 col-sm-6 mb-4" data-aos="fade-up">
+              <div class="single-package-item">
+                <img
+                  src="assets/images/cab/cab2.png"
+                  alt="Shillong to Guwahati Airport"
+                />
+                <div class="single-package-item-txt">
+                  <h3>Shillong to Guwahati Airport</h3>
+                  <div class="about-btn mt-4">
+                    <a class="book-bttn" href="shillong-guwahati-airport.html"
+                      >Book Now</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cab 2 -->
+            <div
+              class="col-md-4 col-sm-6 mb-4"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="single-package-item">
+                <img
+                  src="assets/images/cab/cab1.jpg"
+                  alt="Guwahati Airport to Shillong"
+                />
+                <div class="single-package-item-txt">
+                  <h3>Guwahati Airport to Shillong</h3>
+                  <div class="about-btn mt-4">
+                    <a class="book-bttn" href="guwahati-airport-shillong.php"
+                      >Book Now</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cab 3 -->
+            <div
+              class="col-md-4 col-sm-6 mb-4"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="single-package-item">
+                <img
+                  src="assets/images/cab/cab3.jpg"
+                  alt="Taxi Service Shillong"
+                />
+                <div class="single-package-item-txt">
+                  <h3>Shillong To Dawki Mawlynnong</h3>
+                  <div class="about-btn mt-4">
+                    <a class="book-bttn" href="guwahati-airport-shillong.php"
+                      >Book Now</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-more" data-aos="fade-up">
+            <a href="cab-services.html">SEE MORE</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer>
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-4">
+            <a class="footer-brand" href="index.html">KR NORTHEAST</a>
+            <p class="small opacity-75 pe-lg-5">
+              Your trusted partner for safe mountain travel across the
+              Northeast. Reliability and safety are our top priorities.
+            </p>
+          </div>
+          <div class="col-md-4 col-lg-2">
+            <h6 class="text-white fw-bold mb-4 uppercase tracking-widest small">
+              Explore
+            </h6>
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="fleet.html" class="footer-link">Our Fleet</a>
+            <a href="tours.html" class="footer-link">Packages</a>
+          </div>
+          <div class="col-md-4 col-lg-3">
+            <h6 class="text-white fw-bold mb-4 uppercase tracking-widest small">
+              Book Now
+            </h6>
+            <p class="text-white fw-black fs-5 mb-0">+91 94021 20220</p>
+            <p class="small text-white opacity-75">Available 24/7</p>
+          </div>
+        </div>
+        <hr class="my-5 opacity-10" />
+        <div class="text-center small opacity-50">
+          &copy; 2026 KR Northeast Travel.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+      AOS.init({ duration: 1000, once: true, offset: 50 });
+      $(window).on("scroll", function () {
+        if ($(window).scrollTop() > 50) {
+          $("#mainNav").addClass("scrolled").removeClass("glass-nav");
+        } else {
+          $("#mainNav").removeClass("scrolled").addClass("glass-nav");
+        }
+      });
+    </script>
+  </body>
+</html>

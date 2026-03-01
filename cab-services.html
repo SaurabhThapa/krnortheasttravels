@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxi Services | KR Northeast Travel</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-blue: #0d6efd;
+            --dark-bg: #0f172a;
+            --light-blue: #e0e7ff;
+            --glass-white: rgba(255, 255, 255, 0.1);
+            --nav-glass: rgba(15, 23, 42, 0.6);
+            --radius-md: 0.75rem;
+            --radius-sm: 0.4rem;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Visibility & Styling (Consistent with Canvas) */
+        .navbar {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 20px 0;
+            z-index: 1050;
+        }
+        .glass-nav {
+            background: var(--nav-glass);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .navbar.scrolled {
+            background: white !important;
+            padding: 12px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .navbar-brand { font-weight: 900; letter-spacing: -1px; color: white !important; }
+        .navbar.scrolled .navbar-brand { color: var(--dark-bg) !important; }
+        .nav-link {
+            text-transform: uppercase; font-size: 12px; font-weight: 700;
+            letter-spacing: 1.5px; color: rgba(255,255,255,0.8) !important;
+            margin: 0 12px; transition: 0.3s;
+        }
+        .navbar.scrolled .nav-link { color: #475569 !important; }
+        .navbar.scrolled .nav-link.active { color: var(--primary-blue) !important; }
+        .navbar .navbar-toggler { color: white !important; border: none; }
+        .navbar.scrolled .navbar-toggler { color: var(--dark-bg) !important; }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: var(--dark-bg); margin: 15px -12px 0;
+                padding: 20px; border-radius: var(--radius-md);
+            }
+            .navbar.scrolled .navbar-collapse { background: white; }
+        }
+
+        /* Hero Sub-header */
+        .page-header {
+            padding: 160px 0 80px;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
+                        url('assets/images/cab/cab1.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        /* Card Design - Matches index.html refined Special Packages */
+        .single-package-item {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border: 1px solid #f1f5f9;
+            transition: 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .single-package-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .single-package-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .single-package-item-txt {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .single-package-item-txt h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--dark-bg);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .book-bttn {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background: var(--dark-bg);
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            margin-top: auto;
+        }
+
+        .book-bttn:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        /* Footer */
+        footer { background: var(--dark-bg); padding: 80px 0 40px; color: rgba(255,255,255,0.5); }
+        .footer-brand { font-size: 1.5rem; font-weight: 900; color: white; margin-bottom: 25px; display: inline-block; }
+        .footer-link { color: rgba(255,255,255,0.5); text-decoration: none; transition: 0.3s; font-size: 0.9rem; display: block; margin-bottom: 12px; }
+        .footer-link:hover { color: white; }
+
+        .whatsapp-btn {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background: #25d366; color: white; border-radius: 50%; display: flex; 
+            align-items: center; justify-content: center; font-size: 1.75rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); z-index: 1000;
+            text-decoration: none; transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/919402120220" class="whatsapp-btn shadow-lg" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top glass-nav" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <div class="bg-primary p-2 rounded-2 me-2 shadow">
+                    <i class="fas fa-car text-white"></i>
+                </div>
+                <span>KR NORTHEAST <span class="text-primary">TRAVEL</span></span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="cab-services.html">Fleet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tour-package.html">Tours</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="tel:+919402120220" class="btn btn-primary px-4 fw-bold shadow-sm">
+                            <i class="fas fa-phone-alt me-2"></i>Call Now
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1 class="display-4 fw-black mb-3">Taxi Services</h1>
+            <p class="lead opacity-75">Professional cab rentals and airport transfers across the Northeast</p>
+        </div>
+    </header>
+
+    <section class="pb-5">
+        <div class="container">
+            <div class="row">
+                <!-- Service 1 -->
+                <div class="col-md-4 col-sm-6 mb-4" data-aos="fade-up">
+                    <div class="single-package-item">
+                        <img src="assets/images/cab/cab1.jpg" alt="Guwahati Airport To Shillong">
+                        <div class="single-package-item-txt">
+                            <h3>Guwahati Airport To Shillong</h3>
+                            <div class="about-btn">
+                                <a class="book-bttn" href="guwahati-airport-shillong.html">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="col-md-4 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="single-package-item">
+                        <img src="assets/images/cab/cab2.png" alt="Shillong To Guwahati Airport">
+                        <div class="single-package-item-txt">
+                            <h3>Shillong To Guwahati Airport</h3>
+                            <div class="about-btn">
+                                <a class="book-bttn" href="shillong-guwahati-airport.html">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="col-md-4 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="single-package-item">
+                        <img src="assets/images/cab/cab3.jpg" alt="Shillong To Dawki Mawlynnong">
+                        <div class="single-package-item-txt">
+                            <h3>Shillong To Dawki Mawlynnong</h3>
+                            <div class="about-btn">
+                                <a class="book-bttn" href="shillong-to-dawki-mawlynnong.html">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="col-md-4 col-sm-6 mb-4" data-aos="fade-up">
+                    <div class="single-package-item">
+                        <img src="assets/images/cab/cab4.jpg" alt="Shillong To Double Decker Living Root Bridge">
+                        <div class="single-package-item-txt">
+                            <h3>Shillong To Double Decker Living Root Bridge</h3>
+                            <div class="about-btn">
+                                <a class="book-bttn" href="shillong-to-doubledecker.html">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="col-md-4 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="single-package-item">
+                        <img src="assets/images/cab/cab1.jpg" alt="Shillong To Guwahati City">
+                        <div class="single-package-item-txt">
+                            <h3>Shillong To Guwahati City</h3>
+                            <div class="about-btn">
+                                <a class="book-bttn" href="shillong-to-guwahaticity.html">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="col-md-4 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="single-package-item">
+                        <img src="assets/images/cab/cab5.jpg" alt="Shillong To Krangsuri Falls">
+                        <div class="single-package-item-txt">
+                            <h3>Shillong To Krangsuri Falls</h3>
+                            <div class="about-btn">
+                                <a class="book-bttn" href="shillong-to-krangsuri.html">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 7 -->
+                <div class="col-md-4 col-sm-6 mb-4" data-aos="fade-up">
+                    <div class="single-package-item">
+                        <img src="assets/images/cab/cab6.jpg" alt="Shillong To Mawsynram">
+                        <div class="single-package-item-txt">
+                            <h3>Shillong To Mawsynram</h3>
+                            <div class="about-btn">
+                                <a class="book-bttn" href="shillong-to-mawsynram.html">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 8 -->
+                <div class="col-md-4 col-sm-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="single-package-item">
+                        <img src="assets/images/cab/cab7.jpg" alt="Shillong To Cherrapunjee">
+                        <div class="single-package-item-txt">
+                            <h3>Shillong To Cherrapunjee</h3>
+                            <div class="about-btn">
+                                <a class="book-bttn" href="shillong-to-cherrapunjee.html">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <a class="footer-brand" href="index.html">KR NORTHEAST</a>
+                    <p class="small opacity-75 pe-lg-5">Your trusted partner for safe mountain travel across the Northeast. Reliability and safety are our top priorities.</p>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <h6 class="text-white fw-bold mb-4 uppercase tracking-widest small">Explore</h6>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="cab-services.html" class="footer-link">Our Fleet</a>
+                    <a href="tour-package.html" class="footer-link">Packages</a>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <h6 class="text-white fw-bold mb-4 uppercase tracking-widest small">Book Now</h6>
+                    <p class="text-white fw-black fs-5 mb-0">+91 94021 20220</p>
+                    <p class="small text-white opacity-75">Available 24/7</p>
+                </div>
+            </div>
+            <hr class="my-5 opacity-10">
+            <div class="text-center small opacity-50">
+                &copy; 2026 KR Northeast Travel. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init({ duration: 1000, once: true, offset: 50 });
+        $(window).on('scroll', function() {
+            if ($(window).scrollTop() > 50) {
+                $('#mainNav').addClass('scrolled').removeClass('glass-nav');
+            } else {
+                $('#mainNav').removeClass('scrolled').addClass('glass-nav');
+            }
+        });
+    </script>
+</body>
+</html>

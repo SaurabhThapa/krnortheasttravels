@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arunachal Pradesh | KR Northeast Travel</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-blue: #0d6efd;
+            --dark-bg: #0f172a;
+            --light-blue: #e0e7ff;
+            --glass-white: rgba(255, 255, 255, 0.1);
+            --nav-glass: rgba(15, 23, 42, 0.6);
+            --radius-lg: 1.25rem;
+            --radius-md: 0.75rem;
+            --radius-sm: 0.4rem;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #334155;
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Visibility & Styling */
+        .navbar {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 20px 0;
+            z-index: 1050;
+        }
+        .glass-nav {
+            background: var(--nav-glass);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .navbar.scrolled {
+            background: white !important;
+            padding: 12px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .navbar-brand { font-weight: 900; letter-spacing: -1px; color: white !important; }
+        .navbar.scrolled .navbar-brand { color: var(--dark-bg) !important; }
+        .nav-link {
+            text-transform: uppercase; font-size: 12px; font-weight: 700;
+            letter-spacing: 1.5px; color: rgba(255,255,255,0.8) !important;
+            margin: 0 12px; transition: 0.3s;
+        }
+        .navbar.scrolled .nav-link { color: #475569 !important; }
+        .navbar.scrolled .nav-link.active { color: var(--primary-blue) !important; }
+        .navbar .navbar-toggler { color: white !important; border: none; }
+        .navbar.scrolled .navbar-toggler { color: var(--dark-bg) !important; }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: var(--dark-bg); margin: 15px -12px 0;
+                padding: 20px; border-radius: var(--radius-md);
+            }
+            .navbar.scrolled .navbar-collapse { background: white; }
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 180px 0 100px;
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
+                        url('assets/images/ap/ap1.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        /* Gallery/Slideshow Styles */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        .mySlides { display: none; }
+        .mySlides img { border-radius: var(--radius-md); }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            text-decoration: none;
+            background-color: rgba(0,0,0,0.3);
+        }
+        .next { right: 0; border-radius: 3px 0 0 3px; }
+        .prev:hover, .next:hover { background-color: var(--primary-blue); color: white; }
+        
+        .thumbnail-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .column { flex: 1; }
+        .demo {
+            opacity: 0.6;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: var(--radius-sm);
+        }
+        .active-thumb, .demo:hover { opacity: 1; }
+
+        /* Main Content Styling */
+        .content-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            margin-top: -60px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            border: 1px solid #f1f5f9;
+        }
+
+        .section-title-tag {
+            color: var(--primary-blue);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .text-content p {
+            line-height: 1.8;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        /* Sidebar CTA */
+        .cta-sidebar {
+            background: var(--dark-bg);
+            color: white;
+            padding: 40px;
+            border-radius: var(--radius-md);
+            position: sticky;
+            top: 100px;
+        }
+
+        .btn-call-large {
+            background: var(--primary-blue);
+            color: white;
+            width: 100%;
+            padding: 18px;
+            border-radius: var(--radius-sm);
+            font-weight: 800;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: 0.3s;
+            margin-top: 25px;
+            font-size: 1.1rem;
+        }
+
+        .btn-call-large:hover {
+            background: #0056b3;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer { background: var(--dark-bg); padding: 80px 0 40px; color: rgba(255,255,255,0.5); }
+        .footer-brand { font-size: 1.5rem; font-weight: 900; color: white; margin-bottom: 25px; display: inline-block; }
+        .footer-link { color: rgba(255,255,255,0.5); text-decoration: none; transition: 0.3s; font-size: 0.9rem; display: block; margin-bottom: 12px; }
+        .footer-link:hover { color: white; }
+
+        .whatsapp-btn {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background: #25d366; color: white; border-radius: 50%; display: flex; 
+            align-items: center; justify-content: center; font-size: 1.75rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); z-index: 1000;
+            text-decoration: none; transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- WhatsApp Floating -->
+    <a href="https://wa.me/919402120220" class="whatsapp-btn shadow-lg" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top glass-nav" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <div class="bg-primary p-2 rounded-2 me-2 shadow">
+                    <i class="fas fa-car text-white"></i>
+                </div>
+                <span>KR NORTHEAST <span class="text-primary">TRAVEL</span></span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="fleet.html">Fleet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tour-package.html">Tours</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="tel:+919402120220" class="btn btn-primary px-4 fw-bold shadow-sm">
+                            <i class="fas fa-phone-alt me-2"></i>Call Now
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="page-header">
+        <div class="container">
+            <span class="section-title-tag text-white">Discover Places</span>
+            <h1 class="display-3 fw-black mb-0">Arunachal Pradesh</h1>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="container pb-5">
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="content-card" data-aos="fade-up">
+                    
+                    <!-- Image Gallery / Slideshow -->
+                    <div class="slideshow-container mb-5">
+                        <div class="mySlides">
+                            <img src="assets/images/ap/ap1.jpg" style="width:100%" alt="Arunachal Pradesh">
+                        </div>
+                        <div class="mySlides">
+                            <img src="assets/images/ap/ap2.jpg" style="width:100%" alt="Arunachal Pradesh">
+                        </div>
+                        <div class="mySlides">
+                            <img src="assets/images/ap/ap3.jpg" style="width:100%" alt="Arunachal Pradesh">
+                        </div>
+                        <a class="prev" onclick="plusSlides(-1)">❮</a>
+                        <a class="next" onclick="plusSlides(1)">❯</a>
+                    </div>
+                    
+                    <!-- Thumbnails -->
+                    <div class="thumbnail-row mb-5">
+                        <div class="column">
+                            <img class="demo cursor w-100" src="assets/images/ap/ap1.jpg" onclick="currentSlide(1)" alt="Tawang">
+                        </div>
+                        <div class="column">
+                            <img class="demo cursor w-100" src="assets/images/ap/ap2.jpg" onclick="currentSlide(2)" alt="Ziro Valley">
+                        </div>
+                        <div class="column">
+                            <img class="demo cursor w-100" src="assets/images/ap/ap3.jpg" onclick="currentSlide(3)" alt="Namdapha">
+                        </div>
+                    </div>
+
+                    <div class="text-content">
+                        <h2 class="fw-bold text-dark mb-4">The Land of the Rising Sun</h2>
+                        <p>
+                            <b>Arunachal Pradesh</b>, a land of unspoiled natural beauty, cultural diversity, and exciting adventures! Located in the northeastern region of India, Arunachal Pradesh offers a plethora of attractions for travelers seeking a unique and unforgettable experience.
+                        </p>
+                        <p>
+                            One of the most popular destinations in Arunachal Pradesh is Tawang, a town nestled in the Himalayan mountains. Tawang is home to the Tawang Monastery, one of the largest Buddhist monasteries in India. The monastery houses several ancient artifacts, manuscripts, and paintings, making it a hub of cultural and religious significance.
+                        </p>
+                        <p>
+                            Another must-visit destination in Arunachal Pradesh is Ziro, a beautiful valley known for its picturesque landscapes and vibrant culture. The valley is home to the Apatani tribe, who are known for their unique traditions and practices. Visitors can explore the local villages, interact with the locals, and learn about the rich cultural heritage of the state.
+                        </p>
+                        <p>
+                            Arunachal Pradesh is also home to several national parks and wildlife sanctuaries, such as the Namdapha National Park, which is one of the most biodiverse regions in the world. The park is home to several endangered species such as tigers, clouded leopards, and the Hoolock Gibbon, making it a haven for wildlife enthusiasts.
+                        </p>
+                        <p>
+                            For adventure seekers, Arunachal Pradesh offers a range of activities such as trekking, river rafting, and mountaineering. The state is home to several peaks, including the Kangto and the Gorichen peaks, which offer some of the best mountaineering experiences in India.
+                        </p>
+                        <p>
+                            Arunachal Pradesh also has a rich history, and visitors can explore the ancient forts, monuments, and ruins of the state. The Ita Fort in Itanagar, the capital city of Arunachal Pradesh, is one of the most popular historical sites in the state.
+                        </p>
+                        <p>
+                            With its unspoiled natural beauty, rich cultural heritage, and exciting adventures, Arunachal Pradesh is a must-visit destination for travelers looking for an off-the-beaten-path experience. Book your trip to Arunachal Pradesh with us and get ready to create unforgettable memories in this beautiful state.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="cta-sidebar" data-aos="fade-left">
+                    <h4 class="fw-bold mb-3">Book Your Trip</h4>
+                    <p class="small opacity-75 mb-4">Interested in exploring Arunachal Pradesh? Call our travel manager directly to discuss itineraries, permits (ILP), and the best available cab rates.</p>
+                    
+                    <div class="p-3 bg-white bg-opacity-10 rounded-3 mb-2">
+                        <p class="small mb-0 opacity-75">Direct Booking Hotline:</p>
+                        <h3 class="fw-black mb-0">+91 78922 77693</h3>
+                    </div>
+                    
+                    <a href="tel:917892277693" class="btn-call-large">
+                        <i class="fas fa-phone-alt"></i> Call to Book Now
+                    </a>
+
+                    <div class="mt-4 pt-4 border-top border-secondary">
+                        <h6 class="fw-bold small mb-3">Why book with KR Travel?</h6>
+                        <ul class="list-unstyled small opacity-75 d-grid gap-2">
+                            <li><i class="fas fa-check text-primary me-2"></i> Expert Hill Driving Specialists</li>
+                            <li><i class="fas fa-check text-primary me-2"></i> Permit Assistance (ILP)</li>
+                            <li><i class="fas fa-check text-primary me-2"></i> Transparent Fixed Pricing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <a class="footer-brand" href="index.html">KR NORTHEAST</a>
+                    <p class="small opacity-75 pe-lg-5">Your trusted partner for safe mountain travel across the Northeast. Reliability and safety are our top priorities.</p>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <h6 class="text-white fw-bold mb-4 uppercase tracking-widest small">Explore</h6>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="fleet.html" class="footer-link">Our Fleet</a>
+                    <a href="tour-package.html" class="footer-link">Packages</a>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <h6 class="text-white fw-bold mb-4 uppercase tracking-widest small">Quick Booking</h6>
+                    <p class="text-white fw-black fs-5 mb-0">+91 94021 20220</p>
+                    <p class="small text-white opacity-75">Available 24/7</p>
+                </div>
+            </div>
+            <hr class="my-5 opacity-10">
+            <div class="text-center small opacity-50">
+                &copy; 2026 KR Northeast Travel. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // AOS Animation
+        AOS.init({ duration: 1000, once: true, offset: 50 });
+
+        // Navbar Scroll
+        $(window).on('scroll', function() {
+            if ($(window).scrollTop() > 50) {
+                $('#mainNav').addClass('scrolled').removeClass('glass-nav');
+            } else {
+                $('#mainNav').removeClass('scrolled').addClass('glass-nav');
+            }
+        });
+
+        // Slideshow Logic
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("demo");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active-thumb", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active-thumb";
+        }
+    </script>
+</body>
+</html>
